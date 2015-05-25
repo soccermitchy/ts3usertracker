@@ -1,0 +1,46 @@
+---------------------------------- --
+--             README              --
+-------------------------------------
+-- This file contains configration --
+-- for the following:              --
+--  - Nginx                        --
+--  - Teamspeak                    --
+--  - PostgreSQL                   --
+--  - Lapis                        --
+-------------------------------------
+local config = require'lapis.config'
+
+
+------------------------------------
+-- Development Environment Config --
+------------------------------------
+-- Used by default, but shows     --
+-- errors by default.             --
+------------------------------------
+config("development", { 
+	-------------------------
+	-- Nginx Configuration --
+	-------------------------
+	port = 5000, -- Web port
+
+	----------------------
+	-- TS Configuration -- Note: Mainly used for cron job.
+	----------------------
+	ts = {
+		host = "127.0.0.1", 	-- Host 
+		port = 10011,      	-- TS query port. Default: 10011
+		user = "serveradmin",	-- TS query user.
+		pass = "changeme"	-- TS query password.
+	},
+
+	----------------------------
+	-- Database configuration --
+	----------------------------
+	postgres = {
+		backend = "pgmoon", 	-- Do not change.
+		host = "127.0.0.1", 	-- Database host
+		user = "ts3track",	-- Database user
+		password = "asdfasdf",	-- Database password
+		database = "ts3-dev",	-- Database name
+	}
+})
