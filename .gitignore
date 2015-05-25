@@ -1,0 +1,9 @@
+client_body_temp
+fastcgi_temp
+logs
+proxy_temp
+scgi_temp
+uswgi_temp
+
+mine.types
+nginx.conf.compiled
