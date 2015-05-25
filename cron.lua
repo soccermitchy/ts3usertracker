@@ -1,5 +1,5 @@
 if not IN_LAPIS then
-	io.open'lapis exec "IN_LAPIS=true dofile\'cron.lua\'"'
+	io.popen'lapis exec "IN_LAPIS=true dofile\'cron.lua\'"'
 	os.exit()
 end
 local config = require("lapis.config").get()
