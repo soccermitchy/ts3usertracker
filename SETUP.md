@@ -4,6 +4,7 @@ This is how to setup the TS3 User Tracker. This assumes you have a PostgreSQL da
 ## 1. Install dependencies
 `luarocks install lapis` - Lapis is the web framework used for all of the web-based stuff and database stuff.  
 `luarocks install lua-messagepack` - Used to transfer data between non-web stuff and the database.  
+Go get the OpenResty source and install it, Lapis depends on it.  
 
 ## 2. Configure
 `cp config.lua.example config.lua`  
