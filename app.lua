@@ -3,9 +3,9 @@ local Model = require("lapis.db.model").Model
 local app = lapis.Application()
 
 local Track = Model:extend("track",{primary_key='track_num'})
-
+app:enable('etlua')
 app:get("/", function()
-  return "Welcome to Lapis " .. require("lapis.version")
+	return {render="list"}
 end)
 
 app:get("/cron", function()

@@ -1,0 +1,8 @@
+<!-- views/list.etlua -->
+<% view_track=require("lapis.db.model").Model:extend("view_track") %>
+<table border='1'>
+	<tr><td><b>Username</b></td><td><b>Time</b></td></tr>
+	<% for k,v in pairs(view_track:select("ORDER BY count DESC")) do %>
+		<tr><td><%= v.clientname %></td><td><%= v.count %></tr>
+	<% end %>
+</table>
