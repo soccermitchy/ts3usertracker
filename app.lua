@@ -3,6 +3,7 @@ local Model = require("lapis.db.model").Model
 local app = lapis.Application()
 
 local Track = Model:extend("track",{primary_key='track_num'})
+local Clients = Model:extend("clients",{primary_key='id'})
 app:enable('etlua')
 app:get("/", function()
 	return {render="list"}
@@ -15,9 +16,18 @@ app:get("/cron", function()
 	f:close()
 	os.remove('data.mp')
 	for _,user in pairs(data) do
+		local userinstance = Clients:find({clientid = user.id}) 
+		if userinstance then
+			userinstance.clientname = user.name
+			userinstance:update("clientname")
+		else
+			Clients:create({
+				clientid = user.id,
+				clientname = user.name
+			})
+		end
 		Track:create({
-			clientid = user.id,
-			clientname = user.name
+			clientid = user.id
 		})
 	end
 	return'done'

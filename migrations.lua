@@ -16,5 +16,25 @@ return {
 			   FROM track
 			  GROUP BY track.clientname
 		]])
+	end,
+	[3] = function()
+		schema.create_table("clients",{})
+		schema.add_column("clients","id",types.serial)
+		schema.add_column("clients","clientid","smallint NOT NULL DEFAULT 0")
+		schema.add_column("clients","clientname","character varying(30) NOT NULL")
+	end,
+	[4] = function()
+		db.query([[DROP VIEW "public"."view_track";]])
+	end,
+	[5] = function()
+		schema.drop_column("track","clientname")
+	end,
+	[6] = function()
+		db.query([[
+			CREATE OR REPLACE VIEW "public"."view_track" AS SELECT DISTINCT ON (track.clientid) track.clientid,
+				count(track.clientid) AS count
+			   FROM track
+			  GROUP BY track.clientid
+		]])
 	end
 }
