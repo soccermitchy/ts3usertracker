@@ -1,0 +1,28 @@
+<!-- views/layout.etlua -->
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= "TS3UserTracker | " .. (page_title or "index") %></title>
+        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet">
+        <link href="/static/main.css" rel="stylesheet">
+</head>
+<body>
+        <div class="top">
+                <div class="container">
+                        <div class="row twelve columns">
+                                TS3 User Tracker
+                        </div>
+                </div>
+        </div>
+        <div class="container">
+                <div class="row">
+                        <!--<div class="three columns sidebar"><% --render"views.sidebar" %></div>-->
+						<div class="three columns sidebar">No sidebar content yet...</div>
+                        <div class="nine columns main"><% content_for"inner" %></div>
+                </div>
+        </div>
+</body>
+</html>

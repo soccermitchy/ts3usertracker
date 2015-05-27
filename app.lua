@@ -5,6 +5,7 @@ local app = lapis.Application()
 local Track = Model:extend("track",{primary_key='track_num'})
 local Clients = Model:extend("clients",{primary_key='id'})
 app:enable('etlua')
+app.layout = require'views.layout'
 app:get("/", function()
 	return {render="list"}
 end)

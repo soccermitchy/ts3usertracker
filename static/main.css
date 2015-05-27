@@ -1,0 +1,39 @@
+.top {
+    background-color: #eee;
+}
+.main {
+	margin-top: 5px;
+	margin-left: 5px;
+}
+.sidebar {
+	padding-top: 5px;
+	background-color: #ddd;
+	height: 100%;
+}
+.error {
+	background-color: #22eeee;
+	line-height: 30px;
+	margin-bottom: 10px;
+}
+.success {
+	background-color: #ee22ee;
+	line-height: 30px;
+	margin-bottom: 10px;
+}
+.userdesc {
+	line-height: 20px;
+}
+.section {
+	border: 1px solid;
+	border-radius: 5px;
+}
+.wikibar {
+	margin-top: -5px;
+	margin-left: -5px;
+	padding-left: 5px;
+	background-color: #ddd;
+}
+tr td { padding: 3px; }
+th { padding: 3px; background-color: #eee; border-bottom: 2px #000 solid;}
+.table-0 { background-color: #ded; }
+.table-1 { background-color: #ede; }
