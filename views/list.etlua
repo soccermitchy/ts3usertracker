@@ -5,6 +5,6 @@
 	<tr><th>&nbsp;#</th><th>Client ID</th><th>Username</th><th>Time</th></tr>
 	<% for k,v in pairs(view_track:select("JOIN clients ON clients.clientid = view_track.clientid ORDER BY count DESC")) do %>
 		<% i=i+1 %>
-		<tr class="table-<%= (i+1)%2 %>"><td>&nbsp;<%= i %></td><td><%= v.clientid %></td><td><%= v.clientname %></td><td><%= v.count %></tr>
+		<tr class="table-<%= (i+1)%2 %>"><td>&nbsp;<%= i %></td><td><%= v.clientid %></td><td><%= v.clientname %></td><td><%= betterUnits(v.count) %></tr>
 	<% end %>
 </table>

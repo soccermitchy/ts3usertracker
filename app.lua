@@ -6,7 +6,21 @@ local Track = Model:extend("track",{primary_key='track_num'})
 local Clients = Model:extend("clients",{primary_key='id'})
 app:enable('etlua')
 app.layout = require'views.layout'
+function betterUnits(i)
+	s=''
+	if i/60>1 then
+		local hours=tostring(i/60)
+		hours=hours:match("(%d+%.%d%d)%d+") 
+			or hours:match("(%d+%.%d%d)")
+			or hours:match("(%d+%.%d)")
+			or hours:match("(%d+)")
+		return hours..' hours'
+	else
+		return i..' minutes'
+	end
+end
 app:get("/", function()
+	--self.betterUnits=betterUnits
 	return {render="list"}
 end)
 
