@@ -1,5 +1,5 @@
 if not IN_LAPIS then
-	io.popen'lapis exec "IN_LAPIS=true dofile\'cron.lua\'"'
+	io.popen'lapis exec "IN_LAPIS=true dofile\'cron.lua\'"':read'*a'
 	os.exit()
 end
 local config = require("lapis.config").get()
@@ -82,17 +82,17 @@ for _,user in pairs(split(data,'|')) do
 		userdata[k]=userdata[k]:gsub("\\r","\13"):gsub("\\t","\9"):gsub("\\v","\11")
 	end
 	if tonumber(userdata.client_type)==0 then
-		table.insert(topack,{id=userdata.client_database_id,name=userdata.client_nickname})
+		--print(userdata.cid,userdata.client_nickname)
+		if tonumber(userdata.cid)~=12 then
+			--print'added'
+			table.insert(topack,{id=userdata.client_database_id,name=userdata.client_nickname})
+		end
 	end
+	--print(#topack)
 	userdata=nil
 end
 -- Pack the data to be read later
 f=io.open("data.mp","w")
 f:write(mp.pack(topack))
 f:close()
-
-local webcron=socket.connect('localhost',config.port)
-webcron:send('GET /cron HTTP/1.1\nHost: localhost\nFrom: localhost\n')
-webcron:send('User-Agent:cron\n')
-webcron:send('\n\n')
-webcron:close()
+io.popen('curl http://localhost:'..config.port..'/cron -q')
