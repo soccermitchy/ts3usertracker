@@ -20,7 +20,6 @@ function betterUnits(i)
 	end
 end
 app:get("/", function()
-	--self.betterUnits=betterUnits
 	return {render="list"}
 end)
 
