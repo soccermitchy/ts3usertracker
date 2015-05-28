@@ -1,6 +1,9 @@
 <!-- views/list.etlua -->
 <% view_track=require("lapis.db.model").Model:extend("view_track") %>
+<% track=require("lapis.db.model").Model:extend("track") %>
+<% local start = track:select("ORDER BY timestamp ASC LIMIT 1")[1].timestamp %>
 <% i=0 %>
+Tracking started at <%= os.date(nil,start) %> EST (<%= betterUnits(math.floor((os.time()-start)/60)) %> ago)
 <table class="u-full-width">
 	<tr><th>&nbsp;#</th><th>Client ID</th><th>Username</th><th>Time</th></tr>
 	<% for k,v in pairs(view_track:select("JOIN clients ON clients.clientid = view_track.clientid ORDER BY count DESC")) do %>
